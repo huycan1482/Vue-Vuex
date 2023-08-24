@@ -2,18 +2,24 @@
   <div id="app">
     <AppNavbar/>
     <TodoItem/>
+    <StatusBar/>
+    <ProgressBar/>
   </div>
 </template>
 
 <script>
 import TodoItem from './components/TodoItem.vue'
 import AppNavbar from './components/AppNavbar.vue'
+import StatusBar from './components/StatusBar.vue'
+import ProgressBar from './components/ProgressBar.vue'
 
 export default {
     name: 'App',
     components: {
       TodoItem,
-      AppNavbar
+      AppNavbar,
+      StatusBar,
+      ProgressBar
     }
 }
 </script>

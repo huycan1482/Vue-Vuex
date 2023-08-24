@@ -4,19 +4,17 @@
         <ul>
             <li>Home</li>
             <li>About</li>
-            <li>Total todos: {{ totalTodos }}</li>
+            <li v-if="!auth.isAuthenticated">Login</li>
+            <li v-else>Total todos: {{ todos.length }}</li>
         </ul>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'AppNavbar',
-    computed : {
-        totalTodos () {
-            return this.$store.state.todos.length
-        }
-    }
+    computed : mapState(['todos', 'auth'])
 }
 </script>
 

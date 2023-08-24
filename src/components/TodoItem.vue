@@ -1,21 +1,21 @@
 <template>
     <div class="todo-list">
-        <ul>
+        <ul v-if="auth.isAuthenticated">
             <li v-for="todo in todos" :key="todo.id">
                 {{ todo.title }}
             </li>
         </ul>
+        <p v-else style="text-align: center">
+            Not authorized
+        </p>
     </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
     name: 'TodoItem',
-    computed: {
-        todos() {
-            return this.$store.state.todos
-        }
-    }
+    computed: mapState(['todos', 'auth'])
 }
 </script>
 

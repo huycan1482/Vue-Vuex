@@ -1,5 +1,7 @@
 <template>
-    <p class="progress-bar">Progress: {{ progress }} %</p>
+    <div v-if="isAuthenticated">
+        <p class="progress-bar">Progress: {{ progress }} %</p>
+    </div>
 </template>
 
 <script>
@@ -11,7 +13,7 @@ export default {
     //         return Math.round(this.$store.state.todos.filter(todo => todo.completed).length / this.$store.state.todos.length * 100);
     //     }
     // })
-    computed: mapGetters(['progress'])
+    computed: {...mapGetters(['progress', 'isAuthenticated'])}
 }
 </script>
 

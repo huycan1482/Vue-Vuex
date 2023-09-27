@@ -4,17 +4,29 @@
         <ul>
             <li>Home</li>
             <li>About</li>
-            <li v-if="!auth.isAuthenticated">Login</li>
-            <li v-else>Total todos: {{ todos.length }}</li>
+            <li v-if="!isAuthenticated">
+                <button @click="TOGGLE_AUTH">Login</button>
+            </li>
+            <li v-else>
+                Total todos: {{ todos.length }}
+                <button @click="TOGGLE_AUTH">Logout</button>
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 export default {
     name: 'AppNavbar',
-    computed : mapState(['todos', 'auth'])
+    computed : mapGetters(['isAuthenticated', 'todos']),
+    methods: mapMutations(['TOGGLE_AUTH'])
+
+    // methods: {
+    //     loginOrLogout() {
+    //         this.$store.commit('TOGGLE_AUTH')
+    //     }
+    // }
 }
 </script>
 
